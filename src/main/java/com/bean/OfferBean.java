@@ -1,15 +1,21 @@
 package com.bean;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class OfferBean 
 {
 	private Integer offerId;
 	private String title;
 	private String description;
-	private String active;
+	private Boolean active;
 	private String startDate;
 	private String endDate;
 	private String locationId;
 	private String foodType;
+	private MultipartFile offerPic;
+	private String offerPicPath;
+	private String locationTitle; 
+	
 	public Integer getOfferId() {
 		return offerId;
 	}
@@ -28,12 +34,7 @@ public class OfferBean
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getActive() {
-		return active;
-	}
-	public void setActive(String active) {
-		this.active = active;
-	}
+	 
 	public String getStartDate() {
 		return startDate;
 	}
@@ -57,6 +58,30 @@ public class OfferBean
 	}
 	public void setFoodType(String foodType) {
 		this.foodType = foodType;
+	}
+	public Boolean getActive() {
+		return active;
+	}
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	public MultipartFile getOfferPic() {
+		return offerPic;
+	}
+	public void setOfferPic(MultipartFile offerPic) {
+		this.offerPic = offerPic;
+	}
+	public String getOfferPicPath() {
+		return offerPicPath;
+	}
+	public void setOfferPicPath(String offerPicPath) {
+		this.offerPicPath = offerPicPath;
+	}
+	public String getLocationTitle() {
+		return locationTitle;
+	}
+	public void setLocationTitle(String locationTitle) {
+		this.locationTitle = locationTitle;
 	}
 	
 

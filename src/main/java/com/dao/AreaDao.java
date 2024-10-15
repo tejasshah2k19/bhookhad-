@@ -18,7 +18,7 @@ public class AreaDao
 	
 	public void addArea(AreaBean areabean) {
 	
-		jdbctemplate.update("insert into area(areaName,areaId) values(?,?)",areabean.getAreaName(),areabean.getAreaId());
+		jdbctemplate.update("insert into area(areaName,areaId,cityId) values(?,?,?)",areabean.getAreaName(),areabean.getAreaId(),areabean.getCityId());
 	}
 	public List<AreaBean> getAllArea()
 	{

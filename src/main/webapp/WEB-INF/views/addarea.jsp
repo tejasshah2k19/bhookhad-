@@ -153,13 +153,8 @@
     <div class="heading">BHOOKAD</div>
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="home">Home</a>
-        <a href="addcity" class="active">ADD CITY</a>
-        <a href="addarea">ADD AREA</a>
-        <a href="addlocation">ADD LOCATION</a>
-   <a href="addother">ADD OTHER</a>
-    </div>
+  	<jsp:include page="AdminNavigation.jsp"></jsp:include>
+ 
 
     <!-- Main Content Section -->
     <div class="main">
@@ -190,4 +185,4 @@
     </div>
 
 </body>
-</html> 
+</html>

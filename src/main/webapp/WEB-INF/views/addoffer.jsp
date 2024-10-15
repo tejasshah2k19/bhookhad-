@@ -147,30 +147,20 @@
     <div class="heading">BHOOKAD</div>
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="home">Home</a>
-        <a href="addcity" class="active">ADD CITY</a>
-        <a href="addarea">ADD AREA</a>
-        <a href="addlocation">ADD LOCATION</a>
-        <a href="addother">ADD OTHER</a>
-    </div>
+   	<jsp:include page="AdminNavigation.jsp"></jsp:include>
+ 
     <!-- Main Content Section -->
     <div class="main">
         <h1>Add a New Offer</h1>
         <div class="content">
             <!-- Form for Adding Offer -->
-            <form action="saveoffer" method="POST">
+            <form action="saveoffer" method="POST" enctype="multipart/form-data">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" placeholder="Enter offer title">
 
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="description" placeholder="Enter offer description">
 
-                <label for="active">Active:</label>
-                <select id="active" name="active">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
 
                 <label for="startDate">Start Date:</label>
                 <input type="date" id="startDate" name="startDate">
@@ -186,7 +176,11 @@
 				</select>
 				                <label for="foodType">Food Type:</label>
                 <input type="text" id="foodType" name="foodType" placeholder="Enter food type">
-
+				                
+				                
+				             <label for="offerPic">Offer Banner:</label>
+                			<input type="file" name="offerPic"/> 
+				
                 <input type="submit" value="Add Offer">
             </form>
         </div>

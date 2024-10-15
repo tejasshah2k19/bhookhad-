@@ -119,13 +119,8 @@
     <div class="heading">BHOOKAD</div>
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="home">Home</a>
-        <a href="addcity">ADD CITY</a>
-        <a href="addarea">ADD AREA</a>
-        <a href="addlocation">ADD LOCATION</a>
-         <a href="addother">ADD OTHER</a>
-    </div>
+  	<jsp:include page="AdminNavigation.jsp"></jsp:include>
+
 
     <!-- Main Content Section -->
     <div class="main">
@@ -143,6 +138,7 @@
                         <th>End Date</th>
                         <th>Location ID</th>
                         <th>Food Type</th>
+                        <th>Banner</th>
                          <th>Actions</th>
                     </tr>
                 </thead>
@@ -156,8 +152,11 @@
                             <td>${offer.active}</td>
                             <td>${offer.startDate}</td>
                             <td>${offer.endDate}</td>
-                            <td>${offer.locationId}</td>
+                            <td>${offer.locationTitle}</td>
                             <td>${offer.foodType}</td>
+                            <td>
+                            	<img src="${offer.offerPicPath}" height="100px" widht="100px"/>
+                            </td>
                             
                              <td>
                 <a href="updateOffer?id=${offer.offerId}" style="color: #ff6347; text-decoration: none;">Update</a> |
@@ -176,4 +175,4 @@
     </div>
 
 </body>
-</html>  
+</html>

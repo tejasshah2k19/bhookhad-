@@ -53,5 +53,6 @@ create table offers(
 
 alter table location add foodType varchar(50);
 
+alter table offers add offerPicPath varchar(120);
 
 

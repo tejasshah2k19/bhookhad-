@@ -119,16 +119,11 @@
     <div class="heading">BHOOKAD</div>
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="home">Home</a>
-        <a href="addcity">ADD CITY</a>
-        <a href="addarea">ADD AREA</a>
-        <a href="addlocation" class="active">ADD LOCATION</a>
-    <a href="addother">ADD OTHER</a>
-    </div>
+ 	<jsp:include page="AdminNavigation.jsp"></jsp:include>
+
 
     <!-- Main Content Section -->
-    <<div class="main">
+    <div class="main">
         <h1>List of Locations</h1>
         <div class="content">
             <!-- Table to display the list of locations -->

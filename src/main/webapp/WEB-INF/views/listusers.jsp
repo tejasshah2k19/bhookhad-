@@ -103,7 +103,7 @@
     %>
     <tr> 
          <td><%=u.getUserId()%></td>
-        <td><%=u.getFirstname()%></td>
+        <td><%=u.getFirstName()()%></td>
         <td><%=u.getEmail()%></td>
         <td>
             <a href="deleteuser?userId=<%=u.getUserId()%>" class="link-button">Delete</a> | 
