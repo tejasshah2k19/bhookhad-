@@ -1,6 +1,7 @@
 package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,20 +35,23 @@ public class SessionController {
 	@Autowired
 	OtpService otpService;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	@GetMapping("/newuser")
 	public String signup() {
 
 		return "Signup";
 	}
 
-	@PostMapping("/displayData")
-	public String display(@Validated UserBean user, BindingResult result, Model model) throws MessagingException {
+	@PostMapping("/saveuser")
+	public String saveUser(@Validated UserBean user, BindingResult result, Model model) throws MessagingException {
 		if (result.hasErrors()) {
 			model.addAttribute("result", result);
 			return "Signup";
 		} else {
-			File file = new File(
-					"C:\\projects\\Bhookad\\Bhookad\\src\\main\\webapp\\profilepic",
+
+			File file = new File("C:\\projects\\Bhookad\\Bhookad\\src\\main\\webapp\\profilepic",
 					user.getProfilePic().getOriginalFilename());
 			try {
 				FileUtils.writeByteArrayToFile(file, user.getProfilePic().getBytes(), false);
@@ -56,9 +60,8 @@ public class SessionController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-			userDao.addUser(user);
-			mailService.sendWelcomeEmailTemplate(user.getEmail(), user.getFirstName());
+			user.setRole("USER");
+			userDao.addUser(user);// insert into
 
 			try {
 				mailService.sendWelcomeEmailTemplate(user.getEmail(), user.getFirstName());
@@ -90,8 +93,38 @@ public class SessionController {
 	@PostMapping("/authenticate")
 	public String authenticate(UserBean user, Model model) {// email password
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
-		model.addAttribute("user", dbUser);
-		return "home";
+		if (dbUser == null) {
+			model.addAttribute("error", "Invalid Credentials : Email");
+			return "Login";// email wrong
+		} else {
+			// email valid =>
+//			dbUser -> password -> encrypted 
+//			user -> password -> plainText 
+			boolean ans = passwordEncoder.matches(user.getPassword(), dbUser.getPassword());
+
+			if (ans == true) {
+				// valid password
+				// user? role ?
+				// admin => admin home
+				model.addAttribute("user", dbUser);
+
+				if (dbUser.getRole().equals("ADMIN")) {
+					return "home";// admin home
+				} else if (dbUser.getRole().equals("USER")) {
+					return "UserHome";
+				} else {
+					model.addAttribute("error", "Invalid Credentials : Role");
+					return "Login";
+				}
+				// user => user home
+			} else {
+				// invalid -> password
+				model.addAttribute("error", "Invalid Credentials : Password");
+				return "Login";
+			}
+
+		}
+
 	}
 
 	@PostMapping("/sendOtp")

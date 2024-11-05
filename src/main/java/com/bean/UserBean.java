@@ -16,6 +16,7 @@ public class UserBean
     private String email;
     private String password;
     private Integer age;
+    private String role; 
     
     MultipartFile profilePic;
     
@@ -94,6 +95,12 @@ public class UserBean
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 
     

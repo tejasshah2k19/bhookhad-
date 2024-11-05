@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SingletonConfig {
 
-	@Bean
+	@Bean //BCryptPasswordEncoder -> singleton -@Autowired 
 	PasswordEncoder getPasswordEncoder() {
  		return new BCryptPasswordEncoder();
 	}

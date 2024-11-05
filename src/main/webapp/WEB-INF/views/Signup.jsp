@@ -67,7 +67,7 @@
 </head>
 <body>
     <h2>Signup Form</h2>
-    <form action="displayData" method="post" enctype="multipart/form-data">
+    <form action="saveuser" method="post" enctype="multipart/form-data">
         <label for="Firstname">First Name:</label>
         <input type="text" id="Firstname" name="firstName">
 

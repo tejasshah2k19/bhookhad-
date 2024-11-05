@@ -16,28 +16,33 @@ public class UserDao {
 
 	// Create a BCryptPasswordEncoder instance
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	PasswordEncoder passwordEncoder;
 
 	public void addUser(UserBean user) {
 		// Encrypt the password before storing it in the database
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
 
 		stmt.update(
-				"INSERT INTO users(firstName, lastName, gender, contact, email, password, age,profilePicPath) VALUES (?, ?, ?, ?, ?, ?, ?,?)",
+				"INSERT INTO users(firstName, lastName, gender, contact, email, password, age,profilePicPath,role) VALUES (?,?, ?, ?, ?, ?, ?, ?,?)",
 				user.getFirstName(), user.getLastName(), user.getGender(), user.getContact(), user.getEmail(),
-				encryptedPassword, user.getAge(), user.getProfilePicPath());
+				encryptedPassword, user.getAge(), user.getProfilePicPath(),user.getRole());
 
 	}
 
 	public UserBean getUserByEmail(String email) {
 		// TODO Auto-generated method stub
-		UserBean user = stmt.queryForObject("select * from users where email = ?",
-				new BeanPropertyRowMapper<>(UserBean.class), new Object[] { email });
+		UserBean user = null;
+		try {
+			user = stmt.queryForObject("select * from users where email = ?",
+					new BeanPropertyRowMapper<>(UserBean.class), new Object[] { email });
+		} catch (Exception e) {
+
+		}
 		return user;
 	}
 
 	public void deleteUserbyId(Integer userId) {
- 
+
 		stmt.update("delete from users where userId=?", userId);
 
 	}

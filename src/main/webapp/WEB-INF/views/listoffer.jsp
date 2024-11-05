@@ -1,178 +1,187 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BHOOKAD - List of Offers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BHOOKAD - List of Offers</title>
 
-    <!-- Link to Google Fonts for cartoon-like handwriting -->
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<!-- Link to Google Fonts for cartoon-like handwriting -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap"
+	rel="stylesheet">
 
-    <style>
-        /* General styles */
-        body {
-            font-family: "Lilita One", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff; 
-            color: #333;
-        }
+<style>
+/* General styles */
+body {
+	font-family: "Lilita One", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	background-color: #f0f8ff;
+	color: #333;
+}
 
-        .navbar {
-            background-color: #ff6347; 
-            overflow: hidden;
-            text-align: center;
-            border-bottom: 4px solid #ffcccb; 
-        }
+.navbar {
+	background-color: #ff6347;
+	overflow: hidden;
+	text-align: center;
+	border-bottom: 4px solid #ffcccb;
+}
 
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 16px 20px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
-        }
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px 20px;
+	text-decoration: none;
+	font-size: 18px;
+	transition: 0.3s;
+}
 
-        .navbar a:hover {
-            background-color: #ffa07a; 
-            color: white;
-        }
+.navbar a:hover {
+	background-color: #ffa07a;
+	color: white;
+}
 
-        .navbar a.active {
-            background-color: #ff4500; 
-            color: white;
-        }
+.navbar a.active {
+	background-color: #ff4500;
+	color: white;
+}
 
-        .heading {
-            font-family: 'Comic Neue', cursive;
-            font-size: 90px;
-            color: #ff4500; 
-            text-align: center;
-            margin-top: 50px;
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-        }
+.heading {
+	font-family: 'Comic Neue', cursive;
+	font-size: 90px;
+	color: #ff4500;
+	text-align: center;
+	margin-top: 50px;
+	letter-spacing: 3px;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
 
-        .main {
-            text-align: center;
-            padding: 50px;
-        }
+.main {
+	text-align: center;
+	padding: 50px;
+}
 
-        h1 {
-            color: #333;
-        }
+h1 {
+	color: #333;
+}
 
-        .content {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 800px;
-            background-color: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-        }
+.content {
+	margin: 20px auto;
+	padding: 20px;
+	max-width: 800px;
+	background-color: white;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+table, th, td {
+	border: 1px solid #ddd;
+}
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
+th, td {
+	padding: 12px;
+	text-align: left;
+}
 
-        th {
-            background-color: #ff6347;
-            color: white;
-        }
+th {
+	background-color: #ff6347;
+	color: white;
+}
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
 
-        .footer {
-            background-color: #ff6347;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+.footer {
+	background-color: #ff6347;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+</style>
 </head>
 <body>
 
-    <!-- Fun Cartoon-like Heading -->
-    <div class="heading">BHOOKAD</div>
+	<!-- Fun Cartoon-like Heading -->
+	<div class="heading">BHOOKAD</div>
 
-    <!-- Navigation Bar -->
-  	<jsp:include page="AdminNavigation.jsp"></jsp:include>
+	<!-- Navigation Bar -->
+	<jsp:include page="AdminNavigation.jsp"></jsp:include>
 
+	<!-- Main Content Section -->
+	<div class="main">
+		<h1>List of Offers</h1>
+		<div class="content">
+			<!-- Table to display the list of offers -->
+			<table>
+				<thead>
+					<tr>
+						<th>Offer ID</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Active</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th>Location ID</th>
+						<th>Food Type</th>
+						<th>Banner</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Using JSTL to iterate through the list of offers -->
+					<c:forEach items="${listoffer}" var="offer">
+						<tr>
+							<td>${offer.offerId}</td>
+							<td>${offer.title}</td>
+							<td>${offer.description}</td>
+							<td>${offer.active}</td>
+							<td>${offer.startDate}</td>
 
-    <!-- Main Content Section -->
-    <div class="main">
-        <h1>List of Offers</h1>
-        <div class="content">
-            <!-- Table to display the list of offers -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Offer ID</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Active</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Location ID</th>
-                        <th>Food Type</th>
-                        <th>Banner</th>
-                         <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Using JSTL to iterate through the list of offers -->
-                  <c:forEach items="${listoffer}" var="offer">
-                        <tr>
-                            <td>${offer.offerId}</td>
-                            <td>${offer.title}</td>
-                            <td>${offer.description}</td>
-                            <td>${offer.active}</td>
-                            <td>${offer.startDate}</td>
-                            <td>${offer.endDate}</td>
-                            <td>${offer.locationTitle}</td>
-                            <td>${offer.foodType}</td>
-                            <td>
-                            	<img src="${offer.offerPicPath}" height="100px" widht="100px"/>
-                            </td>
-                            
-                             <td>
-                <a href="updateOffer?id=${offer.offerId}" style="color: #ff6347; text-decoration: none;">Update</a> |
-              <a href="deleteUserbyId?id=${user.userId}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </div>
+							<td><c:if test="${offer.endDate >= today }">
+									<span class="success">${offer.endDate}</span>
+								</c:if>
+								
+								<c:if test="${offer.endDate < today }">
+									<span class="fail">${offer.endDate}</span>
+								</c:if>
+								</td>
 
-    <!-- Footer Section -->
-    <div class="footer">
-        &copy; 2024 Bhookad | All Rights Reserved
-    </div>
+							<td>${offer.locationTitle}</td>
+							<td>${offer.foodType}</td>
+							<td><img src="${offer.offerPicPath}" height="100px"
+								widht="100px" /></td>
+
+							<td><a href="updateOffer?id=${offer.offerId}"
+								style="color: #ff6347; text-decoration: none;">Update</a> | <a
+								href="deleteUserbyId?id=${user.userId}"
+								onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Footer Section -->
+	<div class="footer">&copy; 2024 Bhookad | All Rights Reserved</div>
 
 </body>
 </html>

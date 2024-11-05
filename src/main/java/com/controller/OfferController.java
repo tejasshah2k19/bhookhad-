@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -56,6 +57,7 @@ public class OfferController {
 	public String listoffer(Model model) {
 		List<OfferBean> listoffer = offerdao.getAllOffer();
 		model.addAttribute("listoffer", listoffer);
+		model.addAttribute("today",LocalDate.now());
 		return "listoffer";
 	}
 }
